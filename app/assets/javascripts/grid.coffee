@@ -13,6 +13,13 @@ window.Grid = class Grid
           cell = new Cell(x, y, {animate: true, type: CellTypes.blank})
         
         @grid[x][y] = cell
+
+  render: () ->
+    for x in [0..CONF.dimensions.cols-1]
+      for y in [0..CONF.dimensions.rows-1]
+        cell = @getCell(x, y)
+        if cell.options.animate
+          cell.render()
           
   getCell: (x, y) ->
     @grid[x][y]

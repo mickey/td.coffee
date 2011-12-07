@@ -1,20 +1,20 @@
 tdjs ->
-  Game.grid = []
   @setup = () =>
     @size(CONF.dimensions.width, CONF.dimensions.height)
     @background(CONF.colors.bg)
     @smooth()
     @noFill()
-    @frameRate 10
+    @frameRate 30
+    Game.util = Util
     Game.level = new Level(1)
-    Game.grid = new Grid
+    Game.grid = new Grid()
+    Game.wave = new Wave()
     
   @draw = () =>
-    for x in [0..CONF.dimensions.cols-1]
-      for y in [0..CONF.dimensions.rows-1]
-        cell = Game.grid.getCell(x, y)
-        if cell.options.animate
-          cell.render()
+    Game.grid.render()
+    
+    Game.wave.update() if Game.wave.minions.length < Game.wave.conf.nb_minions - 1
+    Game.wave.render()
   
   @mousePressed = () =>
     x = Game.grid.getCoordinate(@mouseX)

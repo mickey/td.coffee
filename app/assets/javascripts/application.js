@@ -7,6 +7,20 @@
 
 //= require libs/toxiclibs
 //= require libs/processing-1.3.6.min
+//= require libs/underscore-1.2.2.min
+//= require professing.js
 //= require config
+
+//= require utils
+
+//= require minion_types
 //= require cell_types
-//= require_tree .
+//= require cell
+
+//= require level
+//= require levels/1
+
+//= require grid
+//= require minion
+//= require wave
+//= require td
