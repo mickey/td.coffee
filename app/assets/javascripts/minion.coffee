@@ -36,21 +36,23 @@ window.Minion = class Minion
         @next_waypoint =
           x: Game.util.grid_to_pixels(@path[@path_index][0])
           y: Game.util.grid_to_pixels(@path[@path_index][1])
+    
     # Determining the angle of the minion according to its direction
-    angle = Math.atan2(dist_y, dist_x)
+    @angle = Math.atan2(dist_y, dist_x) if !(dist_x == 0 and dist_y == 0)
+
     # Updating minion’x and y position according to its direction and speed
-    @x = @x + @type.speed * Math.cos(angle)
-    @y = @y + @type.speed * Math.sin(angle)
+    @x = @x + @type.speed * Math.cos(@angle)
+    @y = @y + @type.speed * Math.sin(@angle)
+
     # Rotating the minion facing the direction it’s walking.
-    if @rotation != angle
-      @rotation = angle + Game.radians(90)
+    @rotation = @angle + Game.radians(90) if @rotation != @angle
     Game.fill(175)
     Game.stroke(0)
     Game.pushMatrix()
     Game.translate(@x,@y)
     Game.rotate(@rotation)
     Game.beginShape(Game.TRIANGLES)
-    r = 6.0
+    r = 5.0
     Game.vertex(0, -r*2)
     Game.vertex(-r, r*2)
     Game.vertex(r, r*2)
