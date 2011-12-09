@@ -8,7 +8,7 @@ LEVELS.noob =
       [
         # first wave
         {
-          spawn_delay: 25
+          spawn_delay: 50
           nb_minions: 20
           spawn: [
             {type: MinionTypes.square, weight: 0.2}

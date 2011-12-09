@@ -1,9 +1,9 @@
 window.MinionTypes =
   triangle:
-    speed: 4
+    speed: 2
     render: () ->
       console.log("render triangle")
   square:
-    speed: 2
+    speed: 1
     render: () ->
       console.log("render square")
